@@ -1,21 +1,23 @@
---- #YAML:1.0
-name:               App-DualLivedList
-version:            0.00_01
-abstract:           Perl extension for determining dual-lived status
+---
+abstract: 'Determines if a module is Dual-Lived'
 author:
-    - Kevin W. Henwood  <Khen1950fx@aol.com>
-license:            Perl
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  5.50
+  - 'Kevin W. Henwood <Khen1950fx@aol.com>'
 build_requires:
-    ExtUtils::MakeMaker:  5.50
-requires:  {}
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.56
+  ExtUtils::MakeMaker: 5.50
+configure_requires:
+  ExtUtils::MakeMaker: 5.50
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: Perl
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+module_name: App-DualLivedList
+name: App-DualLivedList
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  CPAN: 0
+version: 0.00_02

@@ -5,12 +5,8 @@ use inc::Module::Install;
 WriteMakefile (
     'NAME'              => 'App-DualLivedList',
     'ABSTRACT'          => 'Determines if a module is Dual-Lived',
-    'VERSION'           => '0.00_01',
-    'PREREQ_PM'         => { 
-                           'Module::CoreList' => 0,
-                           'Module::Version'  => 0,
-                           'Module::InstalledVersion' => 0,
-                           },
+    'VERSION'           => '0.00_02',
+    'PREREQ_PM'         => { 'CPAN' },
     
     'EXE_FILES'         => [qw(bin/dual-lived)],
                                                         

@@ -3,7 +3,7 @@ package App::DualLivedList;
 use 5.005;
 use strict;
 
-our $VERSION = '0.00_01';
+our $VERSION = '0.00_02';
 
 1;
 __END__
@@ -15,7 +15,7 @@ App-DualLivedList - Perl extension to determine if
 
 =head1 SYNOPSIS
 
-dual-lived <module_name> 
+dual-lived < module_name > 
   
 =head1 DESCRIPTION
 
@@ -29,11 +29,11 @@ None by default.
 =head1 CAVEATS
 
 App::DualLivedList covers the latest stable perl
-which is 5.12.
+which is 5.12.1
 
 =head1 AUTHOR
 
-Version 0.00_01 Kevin W. Henwood <Khen1950fx@aol.com>
+Version 0.00_02 Kevin W. Henwood <Khen1950fx@aol.com>
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -1,4 +1,4 @@
-App::DualLivedList version 0.00_01
+App::DualLivedList version 0.00_02
 =================================
 
 INSTALLATION
@@ -14,9 +14,7 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-Module::Corelist
-Module::Version
-Module::InstalledVersion
+  CPAN
 
 COPYRIGHT AND LICENCE
 

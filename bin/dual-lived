@@ -2,8 +2,7 @@
 
 use strict;
 no warnings;
-use Module::Version 'get_version';
-use Module::InstalledVersion;
+use CPAN;
 
 my $d = shift @ARGV;
 
@@ -102,7 +101,6 @@ my @mods = (
 	'CPANPLUS::Shell::Default::Plugins::Remote',
 	'CPANPLUS::Shell::Default::Plugins::Source',
 	'Class::ISA',
-	'Class::Struct',
 	'Compress::Raw::Bzip2',
 	'Compress::Raw::Zlib',
 	'Compress::Zlib',
@@ -504,16 +502,40 @@ my @mods = (
 
 my(@matches) =  grep(($_ eq $d), @mods);   
 if (@matches) {
+     for $d (CPAN::Shell->expand("Module", "$d")) {
+     print 
+     "module: ",
+     $d->id, "\n",
+     "author: ",
+     $d->cpan_userid, "\n",     
+     "current version: ", 
+     $d->cpan_version, "\n",
+     "installed version: ", 
+     $d->inst_version, "\n",
+     "installed path: ", 
+     $d->inst_file, "\n";
+     }
      print "@matches is core and is Dual-Lived", "\n";
-     print "The current version number is: " . get_version($d), "\n";
-
-     my $m = Module::InstalledVersion->new($d);
-     print "Your installed version is $m->{version}\n"; 
 }
 else {
+     for $d (CPAN::Shell->expand("Module", "$d")) {
+     print 
+     "module: ",
+     $d->id, "\n",
+     "author: ",
+     $d->cpan_userid, "\n",
+     "The current version is: ", 
+     $d->cpan_version, "\n",
+     "installed version: ",
+     $d->inst_version, "\n",
+     "installed path: ",
+     $d->inst_file, "\n";
+     }
      print "It's not on the Dual-Lived list", "\n";
-     print "The current version number is: " . 
-     get_version($d), "\n";
 }
+    
+
+
+
 
 
