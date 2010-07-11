@@ -3,6 +3,7 @@
 use strict;
 no warnings;
 use CPAN;
+use Module::CoreList;
 
 my $d = shift @ARGV;
 
@@ -109,6 +110,7 @@ my @mods = (
 	'Cwd',
 	'DB_File',
 	'Data::Dumper',
+	'Devel::InnerPackage',
 	'Devel::PPPort',
 	'Digest',
 	'Digest::MD5',
@@ -502,39 +504,46 @@ my @mods = (
 
 my(@matches) =  grep(($_ eq $d), @mods);   
 if (@matches) {
+    
      for $d (CPAN::Shell->expand("Module", "$d")) {
      print 
-     "module: ",
+     "\n\tmodule: ",
      $d->id, "\n",
-     "author: ",
+     "\tauthor: ",
      $d->cpan_userid, "\n",     
-     "current version: ", 
+     "\tcurrent version: ", 
      $d->cpan_version, "\n",
-     "installed version: ", 
+     "\tinstalled version: ", 
      $d->inst_version, "\n",
-     "installed path: ", 
+     "\t", 
      $d->inst_file, "\n";
      }
-     print "@matches is core and is Dual-Lived", "\n";
+     print "\t@matches is core and is Dual-Lived", "\n";
 }
 else {
-     for $d (CPAN::Shell->expand("Module", "$d")) {
+     for $d (CPAN::Shell->expand("Module", $d)) {
      print 
-     "module: ",
+     "\n\tmodule: ",
      $d->id, "\n",
-     "author: ",
+     "\tauthor: ",
      $d->cpan_userid, "\n",
-     "The current version is: ", 
+     "\tThe current version is: ",
      $d->cpan_version, "\n",
-     "installed version: ",
+     "\tinstalled version: ",
      $d->inst_version, "\n",
-     "installed path: ",
+     "\t",
      $d->inst_file, "\n";
      }
-     print "It's not on the Dual-Lived list", "\n";
+     print 
+     "\tIt's not on the Dual-Lived list", "\n";
 }
-    
-
+my @d = Module::CoreList->find_modules(qr/^$d$/);
+   if (@d) {
+       print "\t$d is core\n\n";
+   }
+   else {
+       print "\t$d is not core\n\n";
+   };
 
 
 
