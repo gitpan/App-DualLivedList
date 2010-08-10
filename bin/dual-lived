@@ -4,6 +4,9 @@ use strict;
 no warnings;
 use CPAN;
 use Module::CoreList;
+use Term::ANSIColor::Print;
+
+my $print = Term::ANSIColor::Print->new();
 
 my $d = shift @ARGV;
 
@@ -498,7 +501,7 @@ my @mods = (
 	'lib',
 	'parent',
 	'threads',
-	'threads:shared',
+	'threads::shared',
 	'version',
 	'vmsish');
 
@@ -506,40 +509,40 @@ my(@matches) =  grep(($_ eq $d), @mods);
 if (@matches) {
     
      for $d (CPAN::Shell->expand("Module", "$d")) {
-     print 
-     "\n\tmodule: ",
-     $d->id, "\n",
-     "\tauthor: ",
-     $d->cpan_userid, "\n",     
-     "\tcurrent version: ", 
-     $d->cpan_version, "\n",
-     "\tinstalled version: ", 
-     $d->inst_version, "\n",
-     "\t", 
-     $d->inst_file, "\n";
+     $print->bold_black(
+     "\n\tmodule: ", $d->id),
+     $print->dark_blue(
+     "\tauthor: ", $d->cpan_userid),
+     $print->dark_blue(
+     "\tcurrent version: ", $d->cpan_version),
+     $print->dark_red(
+     "\tinstalled version: ", $d->inst_version),
+     $print->dark_red(
+     "\t", $d->inst_file);
      }
-     print "\t@matches is core and is Dual-Lived", "\n";
+     $print->dark_magenta( 
+     "\t@matches is core and is Dual-Lived");
 }
 else {
      for $d (CPAN::Shell->expand("Module", $d)) {
-     print 
-     "\n\tmodule: ",
-     $d->id, "\n",
-     "\tauthor: ",
-     $d->cpan_userid, "\n",
-     "\tThe current version is: ",
-     $d->cpan_version, "\n",
-     "\tinstalled version: ",
-     $d->inst_version, "\n",
-     "\t",
-     $d->inst_file, "\n";
+     $print->bold_black( 
+     "\n\tmodule: ", $d->id),
+     $print->dark_blue(
+     "\tauthor: ", $d->cpan_userid),
+     $print->dark_blue(
+     "\tcurrent version is: ", $d->cpan_version),
+     $print->dark_red(
+     "\tinstalled version: ", $d->inst_version),
+     $print->dark_red(
+     "\t", $d->inst_file),
      }
      print 
      "\tIt's not on the Dual-Lived list", "\n";
 }
 my @d = Module::CoreList->find_modules(qr/^$d$/);
    if (@d) {
-       print "\t$d is core\n\n";
+       $print->bold_black(
+        "\t$d is core\n");
    }
    else {
        print "\t$d is not core\n\n";

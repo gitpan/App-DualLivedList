@@ -1,0 +1,24 @@
+---
+abstract: 'Determines if a module is Dual-Lived'
+author:
+  - 'Kevin W. Henwood <Khen1950fx@aol.com>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+module_name: App-DualLivedList
+name: App-DualLivedList
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  CPAN: Module::CoreList
+  Term::ANSIColor::Print: 0
+version: 0.00_04
