@@ -8,7 +8,7 @@ configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
 generated_by: 'Module::Install version 0.91'
-license: unknown
+license: Perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
@@ -19,6 +19,9 @@ no_index:
     - inc
     - t
 requires:
-  CPAN: Module::CoreList
-  Term::ANSIColor::Print: 0
-version: 0.00_04
+  CPAN: Memoize
+  Module::CoreList: Term::ANSIColor::Print
+  Test::Kwalitee: 0
+  Test::More: Test::Script
+  Test::Pod: Test::Pod::Coverage
+version: 0.00_05

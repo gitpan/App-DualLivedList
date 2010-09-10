@@ -3,7 +3,7 @@ package App::DualLivedList;
 use 5.005;
 use strict;
 
-our $VERSION = '0.00_04';
+our $VERSION = '0.00_05';
 
 1;
 __END__
@@ -40,16 +40,18 @@ dual-lived /word/ - searchs the entire CPAN for "word"
                     or parts of that word. Note:: "entire"
                     means just that.
      For example: dual-lived /hog/ could return
-     hog, ho, hog-tied, etc.                                        
+     hog, ho, hog-tied, etc.
+     
+dual-lived /^*/   - returns all of the modules on CPAN.                                        
 
 =head1 CAVEATS
 
 App::DualLivedList covers the latest stable perl
-which is 5.12.1
+which is 5.12.2
 
 =head1 AUTHOR
 
-Version 0.00_04 Kevin W. Henwood <Khen1950fx@aol.com>
+Version 0.00_05 Kevin W. Henwood <Khen1950fx@aol.com>
 
 =head1 COPYRIGHT AND LICENSE
 
