@@ -1,4 +1,4 @@
-App::DualLivedList version 0.00_06
+App::DualLivedList version 0.00_07
 =================================
 
 INSTALLATION
@@ -16,6 +16,7 @@ This module requires these other modules and libraries:
 
   CPAN
   Module::CoreList
+  Term::ANSIColor::Print
   
 COPYRIGHT AND LICENCE
 
