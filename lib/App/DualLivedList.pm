@@ -3,62 +3,81 @@ package App::DualLivedList;
 use 5.005;
 use strict;
 
-our $VERSION = '0.00_05';
+require Exporter;
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
+@ISA = qw(Exporter);
+
+# Items to export into callers namespace by default. Note: do not export
+# names by default without a very good reason. Use EXPORT_OK instead.
+# Do not simply export all your public functions/methods/constants.
+
+# This allows declaration	use App::DualLivedList ':all';
+# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
+# will save memory.
+%EXPORT_TAGS = ( 'all' => [ qw(
+	
+) ] );
+
+@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+@EXPORT = qw(
+	
+);
+
+$VERSION = '0.00_01';
+$VERSION = eval $VERSION;  # see L<perlmodstyle>
+
+
+# Preloaded methods go here.
 
 1;
 __END__
+# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
-App-DualLivedList - Perl extension to determine if 
-                    a module is Dual-Lived.
+App::DualLivedList - Perl extension for blah blah blah
 
 =head1 SYNOPSIS
 
-dual-lived < module_name > 
-  
+  use App::DualLivedList;
+  blah blah blah
+
 =head1 DESCRIPTION
 
-This script provides an easy way to determine if a module
-is Dual-Lived or is not Dual-Lived.
+Stub documentation for App::DualLivedList, created by h2xs. It looks like the
+author of the extension was negligent enough to leave the stub
+unedited.
 
-=head2 USAGE
+Blah blah blah.
 
-dual-lived CGI - returns the module name, author, 
-                 current version on CPAN, installed
-                 version number, status as dual-lived 
-                 or core or not.
-                 
-dual-lived /^CGI/ - returns all the modules on CPAN
-                    that start with CGI.
-                    
-dual-lived /CGI/  - returns all the modules on CPAN
-                    that have CGI somewhere in the
-                    namespace.
-                    
-dual-lived /word/ - searchs the entire CPAN for "word"
-                    or parts of that word. Note:: "entire"
-                    means just that.
-     For example: dual-lived /hog/ could return
-     hog, ho, hog-tied, etc.
-     
-dual-lived /^*/   - returns all of the modules on CPAN.                                        
+=head2 EXPORT
 
-=head1 CAVEATS
+None by default.
 
-App::DualLivedList covers the latest stable perl
-which is 5.12.2
+
+
+=head1 SEE ALSO
+
+Mention other useful documentation such as the documentation of
+related modules or operating system documentation (such as man pages
+in UNIX), or any relevant external documentation such as RFCs or
+standards.
+
+If you have a mailing list set up for your module, mention it here.
+
+If you have a web site set up for your module, mention it here.
 
 =head1 AUTHOR
 
-Version 0.00_05 Kevin W. Henwood <Khen1950fx@aol.com>
+root, E<lt>root@localdomainE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010 by Kevin W. Henwood
+Copyright (C) 2010 by root
 
 This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.5.0 or,
+it under the same terms as Perl itself, either Perl version 5.8.8 or,
 at your option, any later version of Perl 5 you may have available.
 
 

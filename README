@@ -1,4 +1,4 @@
-App::DualLivedList version 0.00_05
+App::DualLivedList version 0.00_06
 =================================
 
 INSTALLATION
@@ -15,15 +15,8 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
   CPAN
-  Memoize
   Module::CoreList
-  Test::Pod
-  Test::Pod::Coverage
-  Term::ANSIColor::Print
-  Test::More
-  Test::Script
-  Test::Kwalitee
-
+  
 COPYRIGHT AND LICENCE
 
 Copyright (C) 2010 by Kevin W. Henwood

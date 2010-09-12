@@ -1,6 +1,5 @@
 bin/dual-lived
 Changes
-Debian_CPANTS.txt
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Makefile.pm
@@ -12,7 +11,7 @@ MANIFEST			This list of files
 META.yml
 README
 t/App-DualLivedList.t
-t/kwalitee.t
-t/pod.t
-t/pod_coverage.t
-t/script.t
+xt/kwalitee.t
+xt/pod.t
+xt/pod_coverage.t
+xt/script.t
