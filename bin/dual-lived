@@ -1,10 +1,13 @@
-#!/usr/bin/perl 
+#!/usr/bin/perl
 
 use strict;
 no warnings;
 use CPAN;
+use Getopt::Long;
 use Module::CoreList;
 use Term::ANSIColor::Print;
+
+$|=1;
 
 my $print = Term::ANSIColor::Print->new();
 
@@ -34,6 +37,7 @@ my @mods = (
 	'CGI::Push',
 	'CGI::Switch',
 	'CGI::Util',
+	'Class::ISA',
 	'CPAN',
 	'CPAN::Author',
 	'CPAN::Bundle',
@@ -104,7 +108,6 @@ my @mods = (
 	'CPANPLUS::Shell::Default::Plugins::CustomSource',
 	'CPANPLUS::Shell::Default::Plugins::Remote',
 	'CPANPLUS::Shell::Default::Plugins::Source',
-	'Class::ISA',
 	'Compress::Raw::Bzip2',
 	'Compress::Raw::Zlib',
 	'Compress::Zlib',
@@ -369,8 +372,8 @@ my @mods = (
 	'Pod::Perldoc::ToText',
 	'Pod::Perldoc::ToTk',
 	'Pod::Perldoc::ToXml',
-	'Pod::PlainText',
 	'Pod::Plainer',
+	'Pod::PlainText',
 	'Pod::Select',
 	'Pod::Simple',
 	'Pod::Simple::BlackBox',
@@ -505,6 +508,65 @@ my @mods = (
 	'version',
 	'vmsish');
 
+my @authors = qw(
+ADAMK
+AMS
+ANDK
+ANDYA
+AUDREYT
+BDFOY
+BINGOS
+BLM
+CHORNY
+CORION
+DAGOLDEN
+DANKOGAI
+DLAND
+DROLSKY
+DWHEELER
+ELIZABETH
+FERREIRA
+FLORA
+GAAS
+GBARR
+ILYAZ
+JDB
+JDHEDDEN
+JESSE
+JHI
+JSTOWE
+JV
+KANE
+LDS
+MAREKR
+MARKM
+MHX
+MJD
+MSERGEANT
+MSCHWERN
+MSHELOR
+MUIR
+N/A
+NWCLARK
+NUFFIN
+PJF
+PMQS
+RURBAN
+RGARCIA
+RKOBES
+RMBARKER
+RRA
+SADAHIRO
+SAPER
+SBECK
+SBURKE
+SIMONW
+SMUELLER
+TJENNESS
+TODDR
+TOMHUGHES
+YVES);
+
 my(@matches) =  grep(($_ eq $d), @mods);   
 if (@matches) {
     
@@ -547,6 +609,106 @@ my @d = Module::CoreList->find_modules(qr/^$d$/);
    else {
        print "\t$d is not core\n\n";
    };
+
+my $package = 'dual-lived';
+my($name, $version) = qw(App::DualLivedList 0.00_07);
+
+my $verbose = 1;
+my $debug   = 1;
+my $trace   = 1;
+my $test    = 1;
+
+app_options();
+
+$trace |= ($debug || $test);
+
+my $TMPDIR = $ENV{TMPDIR} || $ENV{TEMP} || '/usr/tmp';
+exit 0; 
+
+sub app_options {
+    Getopt::Long::Configure ('bundling');
+    GetOptions( 'A|alpha'        => \&cpan_id,
+                'a|authors'      => \&authors,
+                'd|distribution' => \&distribution,
+                'f|filestats'    => \&filestats, 
+                'l|list'         => \&list,
+                'u|upgrade'      => \&upgrade,
+                'v|version'      => \&version )
+    or Getopt::Long::HelpMessage(2);
+}
+
+sub version {
+    print STDOUT ("This is $package [$name $version]\n");
+}
+
+sub list {
+    print "module: ", "\n";  
+    foreach my $mod(@mods) {
+        for $mod (CPAN::Shell->expand("Module", $mod)) {
+            $print->bold_black(
+            $mod->id);
+    }
+  }
+}
+
+sub upgrade {
+    CPAN::Shell->install($d);
+}
+
+sub filestats {
+
+use File::CountLines qw(count_lines);
+use Number::Bytes::Human qw(format_bytes);
+
+my $h = Number::Bytes::Human->new;
+for $d (CPAN::Shell->expand("Module", $d)) {
+    my $size = $h->format(-s $d->inst_file);
+    print "Installed size: ", $size, "\n";
+    my $path = ($d->inst_file);
+    my $no_lines = count_lines($path);
+    print "Number of lines: ", $no_lines, "\n";
+    print "Number of words: ";
+    system("wc -w $path");
+  }
+}
+
+sub authors { 
+    foreach my $mod(@mods) {
+        for $mod (CPAN::Shell->expand("Module", $mod)) 
+    {
+        $print->dark_blue( 
+        $mod->cpan_userid);
+    }
+  }   
+}    
+
+sub distribution {
+
+my $distribution = CPAN::Shell->expand(
+        "Module",  $d)->distribution()->pretty_id($d);
+print $distribution, "\n";
+
+CPAN::Index->reload();
+my @modules = CPAN::Shell->expand(
+        "Distribution", $distribution
+)->containsmods();
+foreach my $module(@modules) {
+        print $module, "\n";
+   }
+}
+
+sub cpan_id {
+    foreach my $author(@authors) {
+    $print->dark_blue($author);
+    }
+}
+
+
+
+
+
+
+
 
 
 
