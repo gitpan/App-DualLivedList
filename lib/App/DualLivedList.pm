@@ -3,7 +3,7 @@ package App::DualLivedList;
 use 5.005;
 use strict;
 
-our $VERSION = '0.00_08';
+our $VERSION = '0.00_09';
 
 1;
 __END__
@@ -47,35 +47,46 @@ dual-lived /^*/   - returns all of the modules on CPAN.
 =head2 OPTIONS
 
 You can use one option at a time, or you may bundle them.
-For example,
-             dual-lived CPAN -f
-             dual-lived CPAN -df
-             dual-lived CPAN -dfu
+For example:
+             
+dual-lived CPAN -f
+
+dual-lived CPAN -df
+             
+dual-lived CPAN -dfu
              
 To check the module list and author list:
-             dual-lived // -al
+             
+dual-lived // -al
 
 -A | --alpha   = alphabetical list of authors by CPAN_ID
+
 -a | --authors = list of authors by module appearance
+
 -d | --distributions = gives the distribution name from 
-                 which the dual-lived modules derives
+
+which the dual-lived modules derives
+
 -f | --filestats = gives file size, line length, and word count
+
 -l | --list      = DualLivedList of modules
--u | --upgrade   = installs or upgrades a module
+
+-u | --update    = installs or upgrades a module
+
 -v | --version   = App::DualLivedList version number 
                    
 =head1 CAVEATS
 
 App::DualLivedList covers the latest stable perl
-which is 5.12.3
+which is 5.14.0
 
 =head1 AUTHOR
 
-Version 0.00_08 Kevin W. Henwood <Khen1950fx@aol.com>
+Version 0.00_09 Kevin W. Henwood <Khen1950fx@aol.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010 by Kevin W. Henwood
+Copyright (C) 2010, 2011 by Kevin W. Henwood
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.5.0 or,

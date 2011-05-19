@@ -59,6 +59,7 @@ my @mods = (
 	'CPAN::InfoObj',
 	'CPAN::Kwalify',
 	'CPAN::LWP::UserAgent',
+	'CPAN::Meta::YAML',
 	'CPAN::Mirrors',
 	'CPAN::Module',
 	'CPAN::Nox',
@@ -215,6 +216,7 @@ my @mods = (
 	'Filter::Simple',
 	'Filter::Util::Call',
 	'Getopt::Long',
+	'HTTP::Tiny',
 	'I18N::LangTags',
 	'I18N::LangTags::Detect',
 	'I18N::LangTags::List',
@@ -261,6 +263,7 @@ my @mods = (
 	'IPC::Semaphore',
 	'IPC::SharedMem',
 	'IPC::SysV',
+	'JSON::PP',
 	'List::Util',
 	'List::Util::PP',
 	'List::Util::XS',
@@ -329,6 +332,7 @@ my @mods = (
 	'Module::Load',
 	'Module::Load::Conditional',
 	'Module::Loaded',
+	'Module::Metadata',
 	'Module::Pluggable',
 	'Module::Pluggable::Object',
 	'NEXT',
@@ -350,6 +354,7 @@ my @mods = (
 	'Package::Constants',
 	'Params::Check',
 	'Parse::CPAN::Meta',
+	'Perl::OSType',
 	'PerlIO::via::QuotedPrint',
 	'Pod::Checker',
 	'Pod::Escapes',
@@ -538,6 +543,7 @@ JSTOWE
 JV
 KANE
 LDS
+MAKAMAKA
 MAREKR
 MARKM
 MHX
@@ -632,7 +638,7 @@ sub app_options {
                 'd|distribution' => \&distribution,
                 'f|filestats'    => \&filestats, 
                 'l|list'         => \&list,
-                'u|upgrade'      => \&upgrade,
+                'u|update'       => \&update,
                 'v|version'      => \&version )
     or Getopt::Long::HelpMessage(2);
 }
@@ -651,7 +657,7 @@ sub list {
   }
 }
 
-sub upgrade {
+sub update {
     CPAN::Shell->install($d);
 }
 
