@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 use strict;
-no warnings;
+use warnings;
 use CPAN;
 use Getopt::Long;
 use Module::CoreList;
@@ -37,7 +37,6 @@ my @mods = (
 	'CGI::Push',
 	'CGI::Switch',
 	'CGI::Util',
-	'Class::ISA',
 	'CPAN',
 	'CPAN::Author',
 	'CPAN::Bundle',
@@ -59,6 +58,7 @@ my @mods = (
 	'CPAN::InfoObj',
 	'CPAN::Kwalify',
 	'CPAN::LWP::UserAgent',
+	'CPAN::Meta',
 	'CPAN::Meta::YAML',
 	'CPAN::Mirrors',
 	'CPAN::Module',
@@ -377,7 +377,6 @@ my @mods = (
 	'Pod::Perldoc::ToText',
 	'Pod::Perldoc::ToTk',
 	'Pod::Perldoc::ToXml',
-	'Pod::Plainer',
 	'Pod::PlainText',
 	'Pod::Select',
 	'Pod::Simple',
@@ -419,7 +418,6 @@ my @mods = (
 	'SelfLoader',
 	'Shell',
 	'Storable',
-	'Switch',
 	'Sys::Syslog',
 	'Sys::Syslog::Win32',
 	'TAP::Base',
@@ -486,7 +484,14 @@ my @mods = (
 	'Time::Piece',
 	'Time::Seconds',
 	'Unicode::Collate',
+	'Unicode::Collate::CJK::Big5',
+	'Unicode::Collate::CJK::GB2312',
+	'Unicode::Collate::CJK::JISX0208',
+	'Unicode::Collate::CJK::Korean',
+	'Unicode::Collate::CJK::Pinyan',
+	'Unicode::Collate::CJK::Stroke',
 	'Unicode::Normalize',
+	'Version::Requirements',
 	'Win32',
 	'Win32API::File',
 	'ExtUtils::Myconst2perl',
@@ -638,6 +643,7 @@ sub app_options {
                 'd|distribution' => \&distribution,
                 'f|filestats'    => \&filestats, 
                 'l|list'         => \&list,
+                'm|mods'         => \&modlist,
                 'u|update'       => \&update,
                 'v|version'      => \&version )
     or Getopt::Long::HelpMessage(2);
@@ -689,16 +695,15 @@ sub authors {
 }    
 
 sub distribution {
-
-my $distribution = CPAN::Shell->expand(
+    my $distribution = CPAN::Shell->expand(
         "Module",  $d)->distribution()->pretty_id($d);
-print $distribution, "\n";
+    print $distribution, "\n";
 
-CPAN::Index->reload();
-my @modules = CPAN::Shell->expand(
+    CPAN::Index->reload();
+    my @modules = CPAN::Shell->expand(
         "Distribution", $distribution
-)->containsmods();
-foreach my $module(@modules) {
+    )->containsmods();
+    foreach my $module(@modules) {
         print $module, "\n";
    }
 }
@@ -709,8 +714,11 @@ sub cpan_id {
     }
 }
 
-
-
+sub modlist {
+    foreach my $mod(@mods) {
+    $print->dark_blue($mod);
+    } 
+}
 
 
 

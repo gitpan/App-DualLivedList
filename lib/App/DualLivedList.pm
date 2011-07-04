@@ -3,7 +3,7 @@ package App::DualLivedList;
 use 5.005;
 use strict;
 
-our $VERSION = '0.00_09';
+our $VERSION = '0.00_10';
 
 1;
 __END__
@@ -82,7 +82,7 @@ which is 5.14.0
 
 =head1 AUTHOR
 
-Version 0.00_09 Kevin W. Henwood <Khen1950fx@aol.com>
+Version 0.00_10 Kevin W. Henwood <Khen1950fx@aol.com>
 
 =head1 COPYRIGHT AND LICENSE
 

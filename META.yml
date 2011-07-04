@@ -22,4 +22,4 @@ no_index:
 requires:
   CPAN: Module::CoreList
   Term::ANSIColor::Print: 0
-version: 0.00_09
+version: 0.00_10

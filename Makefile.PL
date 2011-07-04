@@ -5,7 +5,7 @@ use inc::Module::Install;
 WriteMakefile (
     'NAME'              => 'App-DualLivedList',
     'ABSTRACT'          => 'Determines if a module is Dual-Lived',
-    'VERSION'           => '0.00_09',
+    'VERSION'           => '0.00_10',
     'PREREQ_PM'         => { 'CPAN',
                              'Module::CoreList',
                              'Term::ANSIColor::Print' },
@@ -21,7 +21,7 @@ WriteMakefile (
      ),
      (
             ExtUtils::MakeMaker->VERSION() gt '5.50' 
-                ?  ('LICENSE'  => 'perl')         
+                ?  ('LICENSE'  => 'Perl')         
                 : ()
         ),
 

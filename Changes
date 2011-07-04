@@ -1,6 +1,6 @@
 Revision history for Perl extension App::DualLivedList.
 
-0.00_09  Wed May 18 20:28:32 2011
+0.00_10  Sun Jul  3 23:51:30 2011
 	- original version; created by h2xs 1.23 with options
 		-ABX -b 5.5.0 App::DualLivedList
 
