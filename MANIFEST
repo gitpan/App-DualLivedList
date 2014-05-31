@@ -11,7 +11,3 @@ MANIFEST
 META.yml
 README
 t/App-DualLivedList.t
-xt/kwalitee.t
-xt/pod.t
-xt/pod_coverage.t
-xt/script.t

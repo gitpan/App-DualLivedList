@@ -3,8 +3,9 @@ use inc::Module::Install;
 WriteMakefile (
      NAME               => 'App-DualLivedList',
      ABSTRACT           => 'Determines if a module is Dual-Lived',
-     VERSION            => '0.01',
+     VERSION            => '0.02',
      PREREQ_PM          => { 'CPAN' => 0,
+                             'Getopt::Long' => 0,
                              'Module::CoreList' => 0,
                              'Term::ANSIColor::Print' => 0
                            },

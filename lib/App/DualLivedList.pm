@@ -3,7 +3,7 @@ package App::DualLivedList;
 use 5.005;
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 1;
 __END__
@@ -77,11 +77,11 @@ which the dual-lived modules derives
                   
 =head1 AUTHOR
 
-Version 0.01 Kevin W. Henwood <Khen1950fx@aol.com>
+Version 0.01 Kevin W. Henwood <Khen1950fx@yahoo.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2010-2012 by Kevin W. Henwood
+Copyright (C) 2014 by Kevin W. Henwood
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.5.0 or,
